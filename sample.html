@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bingequic</title>
+    <link rel="stylesheet" href="bars.html">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            background-color: black;
+            color: white; 
+            font-family: Arial, sans-serif; 
+        }
+
+        .container {
+            display: flex;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            justify-content: space-between; 
+        }
+
+        .content {
+            flex: 1;
+            padding-right: 20px; /* Add some space between text and images */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: black;
+            z-index: 1000; /* Ensure the header stays above other content */
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .title img {
+            width: 50px; 
+            margin-right: 10px;
+        }
+
+        .description {
+            font-weight: bold;
+            font-size: 70px;
+            margin-top: 80px; /* Add margin to ensure content is visible below the fixed header */
+            margin-bottom: 20px;
+        }
+
+      
+
+        .moredescription {
+            font-size: 20px;
+            color: rgba(186, 182, 175, 0.99);
+            margin-bottom: 50px;
+        }
+
+       
+
+
+
+        .button-51 {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  color: #00132C;
+  font-family: "Arial";
+  font-weight:bold;
+  font-size: 22px;
+  font-weight: 870;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-51:hover,
+.button-51:active {
+  outline: 0;
+}
+
+.button-51:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-51:before {
+  background-color: #d8ea0f;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.button-51:hover:before {
+  background-color: #d1e709;
+}
+
+@media (min-width: 768px) {
+  .button-51 {
+    padding: 16px 32px;
+  }
+}
+
+
+        .images {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end; /* Align images to the right */
+        }
+
+        .column {
+            width: auto; /* Automatically adjust width based on image size */
+            margin-left: 20px; /* Add some space between images */
+        }
+
+        .column img {
+            width: 100%; /* Maintain original image width */
+            margin-bottom: 10px; 
+        }
+        .sketch-highlight{
+  position:relative;
+}
+
+.realistic-marker-highlight{
+  position:relative;
+}
+
+.realistic-marker-highlight:before{
+  content:"";
+  background-color:#aab515;
+  width:100%;
+  height:1em;
+  position:absolute;
+  z-index:-1;
+  filter:url(#marker-shape);
+  left:-0.25em;
+  top:0.1em;
+  padding:0 0.25em;
+}
+    </style>
+</head>
+<body>
+    <header class="title">
+        <img src="https://t4.ftcdn.net/jpg/03/55/84/51/360_F_355845135_iBLbw7HJFIit4AKjHBHaslgbHipVznGY.jpg" alt="logo">
+        bingequic
+    </header>
+    <svg xmlns="//www.w3.org/2000/svg" version="1.1" class="svg-filters" style="display:none;">
+        <defs>
+          <filter id="marker-shape">
+            <feTurbulence type="fractalNoise" baseFrequency="0 0.15" numOctaves="1" result="warp" />
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+          </filter>
+        </defs>
+      </svg>
+    <div class="container">
+        <div class="content">
+            <div class="description">
+                Tailored<br>
+                movie picks<br>
+                for your<br>
+                 <span class="realistic-marker-highlight">unique</span>
+                taste 
+            </div>
+            <div class="moredescription">
+                Fed up with overhyped movies? <br>
+                bingequic customizes picks by<br>
+                rating comedy, gore, and action <br>
+                to match your taste perfectly <br>
+            </div>
+            <a class="button-51" role="button" href="bars.html">Dive in</a>
+        </div>  
+        <div class="images">
+            <div class="column">
+                <img src="https://upload.wikimedia.org/wikipedia/en/0/09/Fight_Club_%282023_film%29.jpg" alt="Fight Club">
+                <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/j/l/n/no-country-for-old-men-original-imaggeejhrxhjg2t.jpeg?q=90&crop=false" alt="No Country for Old Men">
+                <img src="https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/green-book-web.jpg" alt="Green Book">
+            </div>
+            <div class="column">
+                <img src="https://www.cinelinx.com/wp-content/uploads/2020/12/the-green-knight-poster.jpeg" alt="The Green Knight">
+                <img src="https://images.bauerhosting.com/legacy/empire-images/features/59e8d795405a5c6805947751/50%20little%20miss%20sunshine.jpg?auto=format&w=1440&q=80" alt="Little Miss Sunshine">
+                <img src="https://kendalllacey.wordpress.com/wp-content/uploads/2022/03/everything.jpg" alt="Everything Everywhere All at Once">
+            </div>
+            <div class="column">
+                <img src="https://images.squarespace-cdn.com/content/v1/5cf6959864dfad0001763314/1567786818195-D1DHVPQ5SAL90DNHN4F1/Top_15_Movie_Posters_Once_Upon_A_Time.jpg" alt="Once Upon a Time in Hollywood">
+                <img src="https://scene360.com/wp-content/uploads/2014/03/cool-movie-posters-07.jpg" alt="Cool Movie Posters">
+                <img src="https://foundationdesign.co.nz/wp-content/uploads/2014/05/The-Last-Exorcism-Part-II1.jpg" alt="The Last Exorcism Part II">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Binge Gang</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Black background */
+            font-family: Arial, sans-serif;
+            color: #fff; /* White text color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .feedback-container {
+            background-color: #111; /* Dark background for container */
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        .feedback-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feedback-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .feedback-container input[type="text"],
+        .feedback-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #222; /* Dark input background */
+            color: #fff;
+        }
+
+        .minimal-button {
+            background-color: #d6f83f; /* Yellow background */
+            border: 2px solid #ffffff;
+            box-sizing: border-box;
+            color: #000000; /* Black text */
+            font-family: "Arial";
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 10px 20px;
+            position: relative;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .minimal-button:hover,
+        .minimal-button:active {
+            outline: 0;
+            background-color: #f0e130; /* Darker yellow background on hover */
+            cursor: pointer;
+        }
+
+        .minimal-button:before {
+            content: "";
+            height: calc(100% + 3px);
+            position: absolute;
+            right: -7px;
+            top: -9px;
+            transition: background-color 300ms ease-in;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .minimal-button:hover:before {
+            background-color: #ededed;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <h1>Join Our Binge Gang </h1>
+        <form action="https://formspree.io/f/mjkbbrbe" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit" class="minimal-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

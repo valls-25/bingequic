@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Watchlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: black;
+            z-index: 1000; /* Ensure the header stays above other content */
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .title img {
+            width: 50px; 
+            margin-right: 10px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 20px;
+            background-color: #111;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #222;
+            color: #fff;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #86a702;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #d1e709;
+        }
+        .watchlist {
+            margin-top: 30px;
+        }
+        .movie-item {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .movie-item span {
+            color: #fff;
+            font-size: 16px;
+        }
+        .delete-btn {
+            background-color: #ff3333;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .delete-btn:hover {
+            background-color: #e60000;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <img src="https://t4.ftcdn.net/jpg/03/55/84/51/360_F_355845135_iBLbw7HJFIit4AKjHBHaslgbHipVznGY.jpg" alt="Title Image">
+            bingequic
+        </div>
+        
+    </div>
+    <div class="container">
+        <h1>My Watchlist</h1>
+        <form id="watchlistForm">
+            <div class="form-group">
+                <label for="movieTitle">Enter movie title:</label>
+                <input type="text" id="movieTitle" name="movieTitle" placeholder="E.g., Inception" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add to Watchlist">
+            </div>
+        </form>
+        
+        <div class="watchlist" id="watchlist">
+            <!-- Movie list will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission, movie list display, and local storage
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to fetch watchlist from local storage and display
+            function fetchWatchlist() {
+                var watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+                watchlist.forEach(function(movieTitle) {
+                    addMovieToWatchlist(movieTitle);
+                });
+            }
+
+            // Function to save watchlist to local storage
+            function saveWatchlist(watchlist) {
+                localStorage.setItem('watchlist', JSON.stringify(watchlist));
+            }
+
+            // Function to add movie to watchlist
+            function addMovieToWatchlist(movieTitle) {
+                var movieItem = document.createElement('div');
+                movieItem.classList.add('movie-item');
+                movieItem.innerHTML = '<span>' + movieTitle + '</span><button class="delete-btn">Delete</button>';
+                document.getElementById('watchlist').appendChild(movieItem);
+
+                // Attach delete functionality to the delete button
+                var deleteButton = movieItem.querySelector('.delete-btn');
+                deleteButton.addEventListener('click', function() {
+                    movieItem.remove();
+                    var updatedWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+                    updatedWatchlist = updatedWatchlist.filter(function(item) {
+                        return item !== movieTitle;
+                    });
+                    saveWatchlist(updatedWatchlist);
+                });
+            }
+
+            // Fetch existing watchlist on page load
+            fetchWatchlist();
+
+            // Handle form submission
+            document.getElementById('watchlistForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Get the entered movie title
+                var movieTitle = document.getElementById('movieTitle').value.trim();
+
+                if (movieTitle) {
+                    // Clear the input field
+                    document.getElementById('movieTitle').value = '';
+
+                    // Add movie to watchlist array
+                    var watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+                    watchlist.push(movieTitle);
+                    saveWatchlist(watchlist);
+
+                    // Add movie to displayed watchlist
+                    addMovieToWatchlist(movieTitle);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
