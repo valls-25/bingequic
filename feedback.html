@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our Binge Gang</title>
+    <title>Join Our Community</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background-color: #000; /* Black background */
-            font-family: Arial, sans-serif;
+            font-family: "Courier", monospace;
             color: #fff; /* White text color */
             display: flex;
             justify-content: center;
@@ -19,81 +19,49 @@
 
         .feedback-container {
             background-color: #111; /* Dark background for container */
-            padding: 20px;
+            padding: 20px; /* Adjust padding for smaller screens */
             border-radius: 10px;
-            width: 300px;
+            max-width: 100%; /* Adjust width to fit smaller screens */
             box-sizing: border-box;
+            width: 100%;
+            text-align: center; /* Center align content */
         }
 
         .feedback-container h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 28px; /* Adjust font size for smaller screens */
+            margin-bottom: 15px; /* Adjust margin */
+        }
+
+        .feedback-container .description {
+            font-size: 18px; /* Adjust font size */
+            margin-bottom: 20px; /* Adjust margin */
         }
 
         .feedback-container label {
             display: block;
             margin-bottom: 10px;
-            font-size: 14px;
+            font-size: 16px; /* Adjust font size */
+            text-align: left; /* Align labels to the left */
         }
 
         .feedback-container input[type="text"],
         .feedback-container input[type="email"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            background-color: #222; /* Dark input background */
-            color: #fff;
+            padding: 12px; /* Adjust padding */
+            margin-bottom: 15px;
+            font-size: 16px; /* Adjust font size */
         }
 
         .minimal-button {
-            background-color: #d6f83f; /* Yellow background */
-            border: 2px solid #ffffff;
-            box-sizing: border-box;
-            color: #000000; /* Black text */
-            font-family: "Arial";
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 20px;
-            padding: 10px 20px;
-            position: relative;
-            text-decoration: none;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            cursor: pointer;
-            display: block;
-            width: 100%;
-            text-align: center;
-        }
-
-        .minimal-button:hover,
-        .minimal-button:active {
-            outline: 0;
-            background-color: #f0e130; /* Darker yellow background on hover */
-            cursor: pointer;
-        }
-
-        .minimal-button:before {
-            content: "";
-            height: calc(100% + 3px);
-            position: absolute;
-            right: -7px;
-            top: -9px;
-            transition: background-color 300ms ease-in;
-            width: 100%;
-            z-index: -1;
-        }
-
-        .minimal-button:hover:before {
-            background-color: #ededed;
+            padding: 12px 20px; /* Adjust padding */
+            font-size: 18px; /* Adjust font size */
         }
     </style>
 </head>
 <body>
     <div class="feedback-container">
-        <h1>Join Our Binge Gang </h1>
+        <h1>Join Our Community</h1>
+        <p class="description">Get personalized weekly movie suggestions</p>
         <form action="https://formspree.io/f/mjkbbrbe" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
