@@ -11,20 +11,21 @@
             padding: 0;
             overflow: auto;
             background-color: black;
-            color: white; 
-            font-family: Arial, sans-serif; 
+            color: white;
+            font-family: Arial, sans-serif;
         }
 
         .container {
             display: flex;
+            flex-wrap: wrap;
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            justify-content: space-between; 
         }
 
         .content {
             flex: 1;
+            min-width: 300px;
             padding-right: 20px; /* Add some space between text and images */
         }
 
@@ -40,6 +41,7 @@
         }
 
         .title {
+            font-family:"Courier";
             font-weight: bold;
             font-size: 25px;
             display: flex;
@@ -47,115 +49,152 @@
         }
 
         .title img {
-            width: 50px; 
+            width: 50px;
             margin-right: 10px;
         }
 
         .description {
+            font-family:"Courier";
             font-weight: bold;
             font-size: 70px;
             margin-top: 80px; /* Add margin to ensure content is visible below the fixed header */
             margin-bottom: 20px;
         }
 
-      
-
         .moredescription {
+            font-family:"Courier";
             font-size: 20px;
             color: rgba(186, 182, 175, 0.99);
             margin-bottom: 50px;
+            background-color: #333; /* Dark gray background */
+            padding: 20px;
+            border-radius: 10px; /* Optional: Rounded corners for a smoother look */
         }
 
-       
-
-
-
         .button-51 {
-  background-color: transparent;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  color: #00132C;
-  font-family: "Arial";
-  font-weight:bold;
-  font-size: 22px;
-  font-weight: 870;
-  line-height: 24px;
-  padding: 16px 23px;
-  position: relative;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            box-sizing: border-box;
+            color: #00132C;
+            font-family: "Courier";
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 24px;
+            padding: 16px 23px;
+            position: relative;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
 
-.button-51:hover,
-.button-51:active {
-  outline: 0;
-}
+        .button-51:hover,
+        .button-51:active {
+            outline: 0;
+        }
 
-.button-51:hover {
-  background-color: transparent;
-  cursor: pointer;
-}
+        .button-51:hover {
+            background-color: transparent;
+            cursor: pointer;
+        }
 
-.button-51:before {
-  background-color: #d8ea0f;
-  content: "";
-  height: calc(100% + 3px);
-  position: absolute;
-  right: -7px;
-  top: -9px;
-  transition: background-color 300ms ease-in;
-  width: 100%;
-  z-index: -1;
-}
+        .button-51:before {
+            background-color: #d8ea0f;
+            content: "";
+            height: calc(100% + 3px);
+            position: absolute;
+            right: -7px;
+            top: -9px;
+            transition: background-color 300ms ease-in;
+            width: 100%;
+            z-index: -1;
+        }
 
-.button-51:hover:before {
-  background-color: #d1e709;
-}
-
-@media (min-width: 768px) {
-  .button-51 {
-    padding: 16px 32px;
-  }
-}
-
+        .button-51:hover:before {
+            background-color: #d1e709;
+        }
 
         .images {
             flex: 1;
             display: flex;
+            flex-wrap: wrap;
             justify-content: flex-end; /* Align images to the right */
         }
 
         .column {
-            width: auto; /* Automatically adjust width based on image size */
-            margin-left: 20px; /* Add some space between images */
+            flex: 1 1 30%; /* Adjust columns to take up 30% each, to wrap at smaller sizes */
+            max-width: 30%;
+            padding: 5px;
+            box-sizing: border-box;
         }
 
         .column img {
             width: 100%; /* Maintain original image width */
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
         }
-        .sketch-highlight{
-  position:relative;
-}
 
-.realistic-marker-highlight{
-  position:relative;
-}
+        .sketch-highlight {
+            position: relative;
+        }
 
-.realistic-marker-highlight:before{
-  content:"";
-  background-color:#aab515;
-  width:100%;
-  height:1em;
-  position:absolute;
-  z-index:-1;
-  filter:url(#marker-shape);
-  left:-0.25em;
-  top:0.1em;
-  padding:0 0.25em;
-}
+        .realistic-marker-highlight {
+            position: relative;
+        }
+
+        .realistic-marker-highlight:before {
+            content: "";
+            background-color: #aab515;
+            width: 100%;
+            height: 1em;
+            position: absolute;
+            z-index: -1;
+            filter: url(#marker-shape);
+            left: -0.25em;
+            top: 0.1em;
+            padding: 0 0.25em;
+        }
+
+        @media (max-width: 768px) {
+            .description {
+                font-size: 40px;
+                margin-top: 100px;
+            }
+
+            .moredescription {
+                font-size: 16px;
+            }
+
+            .button-51 {
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+
+            .column {
+                flex: 1 1 45%; /* Adjust columns to take up 45% each at medium screen sizes */
+                max-width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .description {
+                font-size: 30px;
+                margin-top: 120px;
+            }
+
+            .moredescription {
+                font-size: 14px;
+            }
+
+            .button-51 {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            .column {
+                flex: 1 1 100%; /* Adjust columns to take up 100% each at small screen sizes */
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -177,7 +216,7 @@
                 Tailored<br>
                 movie picks<br>
                 for your<br>
-                 <span class="realistic-marker-highlight">unique</span>
+                <span class="realistic-marker-highlight">unique</span>
                 taste 
             </div>
             <div class="moredescription">
@@ -187,20 +226,20 @@
                 to match your taste perfectly <br>
             </div>
             <a class="button-51" role="button" href="bars.html">Dive in</a>
-        </div>  
+        </div>
         <div class="images">
             <div class="column">
                 <img src="https://upload.wikimedia.org/wikipedia/en/0/09/Fight_Club_%282023_film%29.jpg" alt="Fight Club">
                 <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/j/l/n/no-country-for-old-men-original-imaggeejhrxhjg2t.jpeg?q=90&crop=false" alt="No Country for Old Men">
                 <img src="https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/green-book-web.jpg" alt="Green Book">
+                <img src="https://www.cinelinx.com/wp-content/uploads/2020/12/the-green-knight-poster.jpeg" alt="The Green Knight">
             </div>
             <div class="column">
-                <img src="https://www.cinelinx.com/wp-content/uploads/2020/12/the-green-knight-poster.jpeg" alt="The Green Knight">
                 <img src="https://images.bauerhosting.com/legacy/empire-images/features/59e8d795405a5c6805947751/50%20little%20miss%20sunshine.jpg?auto=format&w=1440&q=80" alt="Little Miss Sunshine">
                 <img src="https://kendalllacey.wordpress.com/wp-content/uploads/2022/03/everything.jpg" alt="Everything Everywhere All at Once">
+                <img src="https://images.squarespace-cdn.com/content/v1/5cf6959864dfad0001763314/1567786818195-D1DHVPQ5SAL90DNHN4F1/Top_15_Movie_Posters_Once_Upon_A_Time.jpg" alt="Once Upon a Time in Hollywood">
             </div>
             <div class="column">
-                <img src="https://images.squarespace-cdn.com/content/v1/5cf6959864dfad0001763314/1567786818195-D1DHVPQ5SAL90DNHN4F1/Top_15_Movie_Posters_Once_Upon_A_Time.jpg" alt="Once Upon a Time in Hollywood">
                 <img src="https://scene360.com/wp-content/uploads/2014/03/cool-movie-posters-07.jpg" alt="Cool Movie Posters">
                 <img src="https://foundationdesign.co.nz/wp-content/uploads/2014/05/The-Last-Exorcism-Part-II1.jpg" alt="The Last Exorcism Part II">
             </div>
@@ -208,10 +247,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
