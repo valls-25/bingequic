@@ -20,7 +20,7 @@
     width: 100%;
     background-color: #111;
     color: #fff;
-    padding: 10px 20px;
+    padding: 8px 16px;
     text-align: center;
     z-index: 5000;
     display: flex;
@@ -29,9 +29,9 @@
     box-sizing: border-box;
 }
         .header img {
-            width: 60px; /* Increased image size */
+            width: 40px; /* Increased image size */
             vertical-align: middle;
-            margin-right: 20px;
+            margin-right: 10px;
         }
 
         .header .title {
@@ -83,7 +83,7 @@
         }
 
         .title {
-            font-size: 25px;
+            font-size: 20px;
             font-family:"Courier";
             font-weight: bold;
             margin-bottom: 12px;
@@ -156,13 +156,13 @@
         }
 
        .search-bar {
-    padding: 13px 23px; /* Match padding with watch, join, sort buttons */
+    padding: 10px 20px; /* Match padding with watch, join, sort buttons */
     border: 1px solid #ffffff;
     border-radius: 0px;
     background-color: #000000;
     color: #fffafa;
     font-family: "Courier";
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 20px;
     margin-right: 10px; /* Space between buttons */
@@ -174,7 +174,7 @@
     -webkit-user-select: none;
     outline: none;
     box-sizing: border-box; /* Include padding in width calculations */
-    max-width: 300px; /* Maximum width for the search bar */
+    max-width: 250px; /* Maximum width for the search bar */
 }
         .search-bar::placeholder {
             color: #ccc;
@@ -191,11 +191,11 @@
     cursor: pointer;
     display: inline-block;
     font-family: "Courier";
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 20px;
-    margin: 0 10px; /* Added margin for spacing */
-    padding: 13px 23px;
+    margin: 0 5px; /* Added margin for spacing */
+    padding: 10px 16px;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -315,8 +315,12 @@
         }
      @media screen and (max-width: 768px) {
     .header {
+         padding: 8px 12px;
         flex-direction: column; /* Stack header items vertically on small screens */
         align-items: center;
+    }
+         .header img {
+        width: 30px; /* Smaller image size */
     }
 
     .controls {
@@ -324,6 +328,9 @@
         flex-wrap: wrap; /* Allow wrapping of buttons */
         justify-content: center; /* Center align buttons */
         margin-top: 10px; /* Space above buttons */
+    }
+          .title {
+        font-size: 18px; /* Further decreased font size */
     }
 
     .search-bar {
