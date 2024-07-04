@@ -9,11 +9,12 @@
             margin: 0;
             padding: 0;
             background-color: #000; /* Black background */
-            font-family: Arial, sans-serif;
+            font-family: "Courier";
+            color: #fff; /* White text color */
         }
 
         .header {
-            font-family: Elephant;
+            font-family: "Courier";
             font-size: 24px; /* Decreased font size for clarity */
             position: fixed;
             top: 0;
@@ -85,17 +86,14 @@
 
         .title {
             font-size: 25px;
-            font-family: Arial, sans-serif; 
             font-weight: bold;
             margin-bottom: 12px;
-            color: #fff; /* White text color */
         }
 
         .rating-bar {
             display: flex;
             align-items: center;
             margin-bottom: 8px;
-            color: #fff; /* White text color */
         }
 
         .rating-label {
@@ -119,7 +117,7 @@
         }
 
         .rating.comedy::after {
-            background-color:#bdc610; /* Bright yellow */
+            background-color: #bdc610; /* Bright yellow */
         }
 
         .rating.gore::after {
@@ -127,7 +125,7 @@
         }
 
         .rating.suspense::after {
-            background-color: #bdc610;/* Bright blue */
+            background-color: #bdc610; /* Bright blue */
         }
 
         .rating.romance::after {
@@ -150,7 +148,6 @@
         .rating-value {
             margin-left: 10px;
             font-size: 14px;
-            color: #fff; /* White text color */
         }
 
         .search-bar {
@@ -180,7 +177,7 @@
             color: #fffafa;
             cursor: pointer;
             display: inline-block;
-            font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+            font-family: "Courier";
             font-size: 16px;
             font-weight: 600;
             line-height: 20px;
@@ -190,29 +187,28 @@
             text-align: center;
             text-decoration: none;
             touch-action: manipulation;
-            transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+            transition: box-shadow .2s, transform .1s;
             user-select: none;
-            -webkit-user-select: none;
             width: auto;
         }
 
-        .watch,
-        .join,
+        .watch:focus-visible,
+        .join:focus-visible,
         .sort:focus-visible {
             box-shadow: #222222 0 0 0 2px, rgba(6, 5, 5, 0.8) 0 0 0 4px;
             transition: box-shadow .2s;
         }
 
-        .watch,
-        .join,
+        .watch:active,
+        .join:active,
         .sort:active {
             background-color: #000000;
             border-color: #ffffff;
             transform: scale(.96);
         }
 
-        .watch,
-        .join,
+        .watch:disabled,
+        .join:disabled,
         .sort:disabled {
             border-color: #DDDDDD;
             color: #DDDDDD;
@@ -226,10 +222,10 @@
             cursor: pointer; /* Change cursor to pointer on hover */
         }
 
-        /* Additional styles for "Sort" button */
         .header .controls .sort-button {
             margin-right: 10px; /* Adjust spacing */
         }
+
         .overlay {
             display: none; /* Initially hidden */
             position: fixed;
@@ -241,7 +237,7 @@
             z-index: 1000; /* Higher than other content */
             cursor: pointer; /* Show cursor as pointer */
         }
-       
+
         .video-card.magnified {
             position: fixed;
             top: 50%;
@@ -300,6 +296,69 @@
         .magnified .close-button:hover {
             color: #d1e709; /* Bright yellow on hover */
         }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header .controls {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .header .controls .search-bar {
+                flex: 1;
+            }
+
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                padding: 100px 16px 16px; /* Adjust padding to accommodate fixed header */
+                margin-top: 100px; /* Ensure content starts below fixed header */
+            }
+
+            .video-card {
+                margin-bottom: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header .title {
+                margin-bottom: 10px;
+            }
+
+            .header .controls {
+                margin-top: 10px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header .controls .search-bar,
+            .header .controls .watch,
+            .header .controls .join,
+            .header .controls .sort {
+                width: 100%;
+                margin: 5px 0;
+                text-align: center;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                padding: 100px 8px 8px; /* Adjust padding to accommodate fixed header */
+                margin-top: 100px; /* Ensure content starts below fixed header */
+            }
+
+            .video-card {
+                margin-bottom: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -310,19 +369,18 @@
         </div>
         <div class="controls">
             <input type="text" class="search-bar" placeholder="Search by title..." id="searchInput">
-            
             <a class="watch" role="button" href="watchlist.html">Watchlist</a>
-            <a class="join" role="button" href="feedback.html">Join</a> <!-- Minimalistic button -->
-            <a class="sort" role="button" href="#" onclick="sortVideoCards()">Sort</a> <!-- New "Sort" button -->
+            <a class="join" role="button" href="feedback.html">Join</a>
+            <a class="sort" role="button" href="https://copilot.microsoft.com/">Ask AI</a>  <!-- Minimalistic button -->
         </div>
     </div>
 
     <div class="container" id="videoContainer">
         <!-- Sample video cards -->
-        <div class="video-card" >
+        <div class="video-card">
             <img class="thumbnail" src="https://m.media-amazon.com/images/S/pv-target-images/58fe69d89d369d344adaa03aacce6d42f2bff514421626cc3a76445b7cea0c5d.jpg" alt="Coherence">
             <div class="description">
-                <div class="title">Coherence &nbsp;  (7.2)        </div>
+                <div class="title">Coherence &nbsp;  (7.2)</div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
                     <div class="rating action" style="--rating: 50%;"></div>
@@ -355,67 +413,31 @@
                 </div>
             </div>
         </div>
+   
 
-        
-        <div class="video-card"   >
-            <img class="thumbnail" src="https://ntvb.tmsimg.com/assets/p17982927_v_h8_ac.jpg?w=1280&h=720" alt="Video Thumbnail">
+        <div class="video-card">
+            <img class="thumbnail" src=" https://i.ytimg.com/vi/enKBzz4hhHQ/maxresdefault.jpg" alt="Title">
             <div class="description">
-                <div class="title">The Green Knight&nbsp;  (6.6) </div>
+                <div class="title">  The Square &nbsp; (7.1)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 59%;"></div>
-                    <div class="rating-value">59%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 3%;"></div>
-                    <div class="rating-value">3%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 49%;"></div>
-                    <div class="rating-value">49%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 67%;"></div>
+                    <div class="rating action" style="--rating: 67%;"></div>
                     <div class="rating-value">67%</div>
                 </div>
                 <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 39%;"></div>
-                    <div class="rating-value">39%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-            </div>
-        </div>
-        <div class="video-card"  >
-            <img class="thumbnail" src="https://facts.net/wp-content/uploads/2023/06/46-facts-about-the-movie-the-killing-of-a-sacred-deer-1687778181.jpg" alt="Title">
-            <div class="description">
-                <div class="title">Killing of A Sacred Deer&nbsp;  (7.0)            </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
                     <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 9%;"></div>
-                    <div class="rating-value">9%</div>
+                    <div class="rating comedy" style="--rating: 40%;"></div>
+                    <div class="rating-value">33%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">30%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 94%;"></div>
-                    <div class="rating-value">94%</div>
+                    <div class="rating suspense" style="--rating: 69%;"></div>
+                    <div class="rating-value">69%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Romance</div>
@@ -424,11 +446,14 @@
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 69%;"></div>
-                    <div class="rating-value">65%</div>
+                    <div class="rating pace" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
                 </div>
             </div>
         </div>
+
+        
+        
         <div class="video-card"  id="videoCard4">
             <img class="thumbnail" src="https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/fecb0795-bd1f-43c8-b89d-c83585a9cd28/9e18a222-f9b1-46b5-a6d7-867389ab10f8?host=wbd-images.prod-vod.h264.io&partner=beamcom" alt="Title">
             <div class="description">
@@ -465,6 +490,84 @@
                 </div>
             </div>
         </div>
+        <div class="video-card">
+            <img class="thumbnail" src="https://i.ytimg.com/vi/FUXawkH-ONM/mqdefault.jpg " alt="Title">
+            <div class="description">
+                <div class="title">  Anatomy of a Fall &nbsp; (7.7)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating comedy" style="--rating: 85%;"></div>
+                    <div class="rating-value">84%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 23%;"></div>
+                    <div class="rating-value">21%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 95%;"></div>
+                    <div class="rating-value">95%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 10%;"></div>
+                    <div class="rating-value">12%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+        
+        <div class="video-card"  >
+            <img class="thumbnail" src="https://facts.net/wp-content/uploads/2023/06/46-facts-about-the-movie-the-killing-of-a-sacred-deer-1687778181.jpg" alt="Title">
+            <div class="description">
+                <div class="title">Killing of A Sacred Deer&nbsp;  (7.0)            </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 9%;"></div>
+                    <div class="rating-value">9%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 94%;"></div>
+                    <div class="rating-value">94%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 69%;"></div>
+                    <div class="rating-value">65%</div>
+                </div>
+            </div>
+        </div>
+       
         <div class="video-card">
             <img class="thumbnail" src="https://lumiere-a.akamaihd.net/v1/images/kingsmanthesecretservice_coverart_1600x686_b180440d.jpeg?region=0,0,1600,686&width=960" alt="Title">
             <div class="description">
@@ -647,6 +750,42 @@
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
                     <div class="rating pace" style="--rating: 51%;"></div>
                     <div class="rating-value">54%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://images.squarespace-cdn.com/content/v1/61b7a2c705855c798750b051/1662935407702-G9QLEUS1KERU81VJNKZ2/Barbarian-Thumbnail.png" alt="Title">
+            <div class="description">
+                <div class="title"> Barbarian  &nbsp; (7.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">24%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 89%;"></div>
+                    <div class="rating-value">89%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 20%;"></div>
+                    <div class="rating-value:16%;"></div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
                 </div>
             </div>
         </div>
@@ -914,6 +1053,42 @@
             </div>
         </div>
         <div class="video-card">
+            <img class="thumbnail" src=" https://i0.wp.com/thefutureoftheforce.com/wp-content/uploads/2023/01/Babylon-2022-Review.jpg?fit=1928%2C1088&ssl=1" alt="Title">
+            <div class="description">
+                <div class="title"> Babylon  &nbsp; (7.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating suspense" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 60%;"></div>
+                    <div class="rating-value">59%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
             <img class="thumbnail" src="https://i0.wp.com/cornellsun.com/wp-content/uploads/2024/01/Saltburn.png?fit=1170%2C658&ssl=1 " alt="Title">
             <div class="description">
                 <div class="title"> Saltburn  &nbsp; (7.0)           </div>
@@ -1058,6 +1233,42 @@
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
                     <div class="rating pace" style="--rating: 70%;"></div>
                     <div class="rating-value">70%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card"   >
+            <img class="thumbnail" src="https://ntvb.tmsimg.com/assets/p17982927_v_h8_ac.jpg?w=1280&h=720" alt="Video Thumbnail">
+            <div class="description">
+                <div class="title">The Green Knight&nbsp;  (6.6) </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 59%;"></div>
+                    <div class="rating-value">59%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 3%;"></div>
+                    <div class="rating-value">3%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 49%;"></div>
+                    <div class="rating-value">49%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 67%;"></div>
+                    <div class="rating-value">67%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 39%;"></div>
+                    <div class="rating-value">39%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
                 </div>
             </div>
         </div>
@@ -1403,33 +1614,33 @@
                 <div class="title">The Greatest Showman   &nbsp; (7.5)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating action" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">21%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 10%;"></div>
-                    <div class="rating-value">10%</div>
+                    <div class="rating gore" style="--rating: 20%;"></div>
+                    <div class="rating-value">14%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 66%;"></div>
-                    <div class="rating-value">63%</div>
+                    <div class="rating romance" style="--rating: 59%;"></div>
+                    <div class="rating-value">58%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 85%;"></div>
+                    <div class="rating-value">83%</div>
                 </div>
             </div>
         </div>
@@ -1476,19 +1687,19 @@
             <div class="description">
                 <div class="title"> mother!  &nbsp; (6.6)           </div>
                 <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating-label">Chaos</div>
+                    <div class="rating action" style="--rating: 100%;"></div>
+                    <div class="rating-value">100%</div>
                 </div>
                 <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
+                    <div class="rating-label">Drama</div>
+                    <div class="rating comedy" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating gore" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
@@ -1502,8 +1713,8 @@
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
                 </div>
             </div>
         </div>
@@ -1511,7 +1722,7 @@
         <div class="video-card">
             <img class="thumbnail" src=" https://i.ytimg.com/vi/CF6Sez7RWog/maxresdefault.jpg" alt="Title">
             <div class="description">
-                <div class="title"> Dinkirk  &nbsp; (7.8)           </div>
+                <div class="title"> Dunkirk  &nbsp; (7.8)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
                     <div class="rating action" style="--rating: 80%;"></div>
@@ -1551,18 +1762,18 @@
                 <div class="title">  Don't Worry Darling &nbsp; (6.7)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating action" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">21%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating gore" style="--rating: 20%;"></div>
+                    <div class="rating-value">22%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
@@ -1571,13 +1782,13 @@
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
+                    <div class="rating romance" style="--rating: 60%;"></div>
+                    <div class="rating-value">66%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 80%;"></div>
+                    <div class="rating-value">81%</div>
                 </div>
             </div>
         </div>
@@ -1588,33 +1799,33 @@
                 <div class="title">  Little Women &nbsp; (7.8)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating action" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
+                    <div class="rating comedy" style="--rating: 40%;"></div>
+                    <div class="rating-value">38%</div>
                 </div>
                 <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
+                    <div class="rating suspense" style="--rating: 40%;"></div>
+                    <div class="rating-value">36%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
+                    <div class="rating romance" style="--rating: 81%;"></div>
+                    <div class="rating-value">80%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 79%;"></div>
+                    <div class="rating-value">79%</div>
                 </div>
             </div>
         </div>
@@ -1624,33 +1835,33 @@
                 <div class="title"> Pride and Prejudice  &nbsp; (7.8)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating action" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">22%</div>
                 </div>
                 <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 79%;"></div>
+                    <div class="rating-value">79%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
                     <div class="rating-value">50%</div>
                 </div>
                 <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 94%;"></div>
+                    <div class="rating-value">94%</div>
+                </div>
+                <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 75%;"></div>
+                    <div class="rating-value">75%</div>
                 </div>
             </div>
         </div>
@@ -1886,43 +2097,7 @@
         </div>
 
 
-        <div class="video-card">
-            <img class="thumbnail" src=" https://i.ytimg.com/vi/enKBzz4hhHQ/maxresdefault.jpg" alt="Title">
-            <div class="description">
-                <div class="title">  The Square &nbsp; (7.1)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 67%;"></div>
-                    <div class="rating-value">67%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 40%;"></div>
-                    <div class="rating-value">33%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">30%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 69%;"></div>
-                    <div class="rating-value">69%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-            </div>
-        </div>
-
+       
 
         <div class="video-card">
             <img class="thumbnail" src=" https://m.media-amazon.com/images/S/pv-target-images/840703b556af1f16503ff03b392666b9e250c255ec71078fe46549839f8d1af1.jpg" alt="Title">
@@ -2153,43 +2328,7 @@
         </div>
 
 
-        <div class="video-card">
-            <img class="thumbnail" src=" https://images.squarespace-cdn.com/content/v1/61b7a2c705855c798750b051/1662935407702-G9QLEUS1KERU81VJNKZ2/Barbarian-Thumbnail.png" alt="Title">
-            <div class="description">
-                <div class="title"> Barbarian  &nbsp; (7.0)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 30%;"></div>
-                    <div class="rating-value">24%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 89%;"></div>
-                    <div class="rating-value">89%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 20%;"></div>
-                    <div class="rating-value:16%;"></div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-
+        
 
         <div class="video-card">
             <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi2qVsjWJhYMMOoe40bPf8HPL6yGC57IkonQ&s " alt="Title">
@@ -2950,43 +3089,7 @@
         </div>
 
 
-        <div class="video-card">
-            <img class="thumbnail" src="https://i.ytimg.com/vi/FUXawkH-ONM/mqdefault.jpg " alt="Title">
-            <div class="description">
-                <div class="title">  Anatomy of a Fall &nbsp; (7.7)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Drama</div>
-                    <div class="rating comedy" style="--rating: 85%;"></div>
-                    <div class="rating-value">84%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 23%;"></div>
-                    <div class="rating-value">21%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 95%;"></div>
-                    <div class="rating-value">95%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 10%;"></div>
-                    <div class="rating-value">12%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-            </div>
-        </div>
-
+        
 
         <div class="video-card">
             <img class="thumbnail" src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfbrcfcNjMGzN_tvfcreqF2tJaY_XS-vdPHA&s" alt="Title">
@@ -3294,33 +3397,33 @@
                 <div class="title"> Interstellar  &nbsp; (8.7)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
+                    <div class="rating action" style="--rating: 90%;"></div>
                     <div class="rating-value">90%</div>
                 </div>
                 <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">17%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 20%;"></div>
+                    <div class="rating-value">21%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
                     <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
+                    <div class="rating romance" style="--rating: 14%;"></div>
+                    <div class="rating-value">17%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 91%;"></div>
+                    <div class="rating-value">91%</div>
                 </div>
             </div>
         </div>
@@ -3331,33 +3434,33 @@
                 <div class="title"> Catch Me If You Can  &nbsp; (8.1)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating action" style="--rating: 89%;"></div>
+                    <div class="rating-value">89%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">18%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating gore" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
+                    <div class="rating romance" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 84%;"></div>
+                    <div class="rating-value">85%</div>
                 </div>
             </div>
         </div>
@@ -3368,23 +3471,23 @@
                 <div class="title"> American Fiction  &nbsp; (7.5)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating action" style="--rating: 40%;"></div>
                     <div class="rating-value">40%</div>
                 </div>
                 <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 90%;"></div>
                     <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Romance</div>
@@ -3405,33 +3508,33 @@
                 <div class="title">  Top Gun:Maverick  &nbsp; (8.2)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
+                    <div class="rating action" style="--rating: 90%;"></div>
                     <div class="rating-value">90%</div>
                 </div>
                 <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 20%;"></div>
+                    <div class="rating-value">17%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
                     <div class="rating-value">50%</div>
                 </div>
                 <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 40%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 80%;"></div>
+                    <div class="rating-value">82%</div>
                 </div>
             </div>
         </div>
@@ -3476,7 +3579,7 @@
         <div class="video-card">
             <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaDn87SMdMvAPXshcWEVeFsjhy7zPB8vi0g&s " alt="Title">
             <div class="description">
-                <div class="title"> Dark Knight  &nbsp; (9.0)           </div>
+                <div class="title"> The Dark Knight  &nbsp; (9.0)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
                     <div class="rating action" style="--rating: 80%;"></div>
@@ -3542,7 +3645,7 @@
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
                     <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating-value">90%</div>
                 </div>
             </div>
         </div>
@@ -3659,23 +3762,23 @@
         </div>
 
         <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
+            <img class="thumbnail" src="https://media.newyorker.com/photos/5909522d6552fa0be682c09b/master/pass/denby-wolf-of-wall-street.jpg " alt="Title">
             <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
+                <div class="title"> Wolf of the Wall Street  &nbsp; (8.2)           </div>
                 <div class="rating-bar">
                     <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
+                    <div class="rating action" style="--rating: 40%;"></div>
+                    <div class="rating-value">38%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
+                    <div class="rating comedy" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Gore</div>
                     <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
+                    <div class="rating-value">39%</div>
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label">Suspense</div>
@@ -3689,296 +3792,1278 @@
                 </div>
                 <div class="rating-bar">
                     <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
+                    <div class="rating pace" style="--rating: 85%;"></div>
+                    <div class="rating-value">85%</div>
                 </div>
             </div>
         </div>
-
-        <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
-            <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
-            <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
-            <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
-            <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
-            <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
-            <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="video-card">
-            <img class="thumbnail" src=" " alt="Title">
-            <div class="description">
-                <div class="title">   &nbsp; (8.4)           </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Action</div>
-                    <div class="rating action" style="--rating: 80%;"></div>
-                    <div class="rating-value">80%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Comedy</div>
-                    <div class="rating comedy" style="--rating: 60%;"></div>
-                    <div class="rating-value">60%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Gore</div>
-                    <div class="rating gore" style="--rating: 40%;"></div>
-                    <div class="rating-value">40%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Suspense</div>
-                    <div class="rating suspense" style="--rating: 90%;"></div>
-                    <div class="rating-value">90%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label">Romance</div>
-                    <div class="rating romance" style="--rating: 50%;"></div>
-                    <div class="rating-value">50%</div>
-                </div>
-                <div class="rating-bar">
-                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
-                    <div class="rating pace" style="--rating: 70%;"></div>
-                    <div class="rating-value">70%</div>
-                </div>
-            </div>
-        </div>
-        </div>
-
-
-        <div id="overlay" class="overlay"></div>
 
         
 
+        <div class="video-card">
+            <img class="thumbnail" src=" https://www.pluggedin.com/wp-content/uploads/2019/12/the-pursuit-of-happyness.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> Pursuit of Happiness  &nbsp; (8.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Feel - good</div>
+                    <div class="rating gore" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating suspense" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 40%;"></div>
+                    <div class="rating-value">38%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 84%;"></div>
+                    <div class="rating-value">82%</div>
+                </div>
+            </div>
+        </div>
 
+        <div class="video-card">
+            <img class="thumbnail" src="https://i.ytimg.com/vi/UTOZUce1adE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBV85GU4iyCCCDkXZy_WeaJL1YMbA " alt="Title">
+            <div class="description">
+                <div class="title">Deep Water   &nbsp; (5.5)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">15%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 20%;"></div>
+                    <div class="rating-value">22%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 79%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">78%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://lh3.googleusercontent.com/_rlylvifgFPyDF7krIDG0oNxzerJXGt9jUmFigkEAS1u6_wBeAm5YAMHEBPUF19hjZyOHvFDru6mF6k_nrQoUq0mvrzuyjymDkEX1LqHCWFNjP-7NpcrYxVBBR2YrhseS5KFLM5P" alt="Title">
+            <div class="description">
+                <div class="title">  500 Days of Summer &nbsp; (7.7)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 95%;"></div>
+                    <div class="rating-value">95%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 85%;"></div>
+                    <div class="rating-value">85%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://www.hollywoodreporter.com/wp-content/uploads/2014/05/gz-fp-033r.jpg?w=3000 " alt="Title">
+            <div class="description">
+                <div class="title"> Godzilla  &nbsp; (6.4)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 82%;"></div>
+                    <div class="rating-value">82%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">24%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating:60%;"></div>
+                    <div class="rating-value">62%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 70%;"></div>
+                    <div class="rating-value">65%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 30%;"></div>
+                    <div class="rating-value">29%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 80%;"></div>
+                    <div class="rating-value">83%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://media.gq.com/photos/5a298fa25ea5e01844a3ccf0/16:9/w_2560%2Cc_limit/Jurassic-World-2-trailer.jpg " alt="Title">
+            <div class="description">
+                <div class="title"> Jurassic World  &nbsp; (6.9)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">24%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">38%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://media.cnn.com/api/v1/images/stellar/prod/230213144330-02-titanic-25th-anniversary-restricted.jpg?c=original" alt="Title">
+            <div class="description">
+                <div class="title"> Titanic  &nbsp; (7.9)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 60%;"></div>
+                    <div class="rating-value">59%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating comedy" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 15%;"></div>
+                    <div class="rating-value">12%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 70%;"></div>
+                    <div class="rating-value">68%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 85%;"></div>
+                    <div class="rating-value">85%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 79%;"></div>
+                    <div class="rating-value">79%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://m.media-amazon.com/images/M/MV5BMjM0NTQ5NjI0N15BMl5BanBnXkFtZTgwNDI4NTY3MjI@._V1_.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> Jumanji: Welcome to the Jungle  &nbsp; (7.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 92%;"></div>
+                    <div class="rating-value">92%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 20%;"></div>
+                    <div class="rating-value">18%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
+                    <div class="rating-value">54%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 30%;"></div>
+                    <div class="rating-value">29%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 92%;"></div>
+                    <div class="rating-value">92%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://miro.medium.com/v2/resize:fit:2000/1*hOkXdYkTLQbVnCFV98Qmcw.jpeg" alt="Title">
+            <div class="description">
+                <div class="title"> Paranormal Activity 1  &nbsp; (6.4)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 10%;"></div>
+                    <div class="rating-value">8%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">38%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Horror</div>
+                    <div class="rating romance" style="--rating: 69%;"></div>
+                    <div class="rating-value">69%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">68%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://communist.red/wp-content/uploads/2022/08/godfather.png" alt="Title">
+            <div class="description">
+                <div class="title"> The GodFather 1  &nbsp; (9.2)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 89%;"></div>
+                    <div class="rating-value">87%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://ntvb.tmsimg.com/assets/p6319_v_h8_bi.jpg?w=1280&h=720" alt="Title">
+            <div class="description">
+                <div class="title"> The Godfather 2  &nbsp; (9.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">78%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 69%;"></div>
+                    <div class="rating-value">68%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 30%;"></div>
+                    <div class="rating-value">27%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyR3dTTm4jEvV7jhK6qIC5VDXdOL-PZp0Omg&s" alt="Title">
+            <div class="description">
+                <div class="title">Annabelle   &nbsp; (5.4)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 10%;"></div>
+                    <div class="rating-value">8%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 66%;"></div>
+                    <div class="rating-value">67%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://m.media-amazon.com/images/M/MV5BMTA5OTgxNTc0MDdeQTJeQWpwZ15BbWU2MDM3MTA3Ng@@._V1_.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> The Exorcism of Emily Rose   &nbsp; (6.7)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Horror</div>
+                    <div class="rating comedy" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 70%;"></div>
+                    <div class="rating-value">73%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">64%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 10%;"></div>
+                    <div class="rating-value">12%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src="https://res.cloudinary.com/jerrick/image/upload/v1698425333/653be9f5a88d15001da206a7.jpg " alt="Title">
+            <div class="description">
+                <div class="title"> Final Destination 1  &nbsp; (6.7)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 25%;"></div>
+                    <div class="rating-value">27%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 75%;"></div>
+                    <div class="rating-value">75%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 20%;"></div>
+                    <div class="rating-value">15%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://i.ytimg.com/vi/tvioZFVD98A/hqdefault.jpg " alt="Title">
+            <div class="description">
+                <div class="title"> Final Destination 5  &nbsp; (5.9)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 85%;"></div>
+                    <div class="rating-value">85%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 30%;"></div>
+                    <div class="rating-value">25%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 85%;"></div>
+                    <div class="rating-value">84%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://www.hollywoodreporter.com/wp-content/uploads/2022/10/I-Know-What-You-Did-Last-Summer-Still-Everett-MCDIKNW_EC001-H-2022.jpg?w=1296" alt="Title">
+            <div class="description">
+                <div class="title"> I Know What You Did Last Summer (1997)  &nbsp; (5.8)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 60%;"></div>
+                    <div class="rating-value">58%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">14%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 30%;"></div>
+                    <div class="rating-value">29%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 80%;"></div>
+                    <div class="rating-value">85%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://static.faqabout.me/cover/legally-blonde-png.png" alt="Title">
+            <div class="description">
+                <div class="title"> Legally Blonde  &nbsp; (6.5)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 3%;"></div>
+                    <div class="rating-value">2%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 60%;"></div>
+                    <div class="rating-value">62%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://hips.hearstapps.com/hmg-prod/images/clueless-index-1594932028.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> Clueless  &nbsp; (6.9)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 40%;"></div>
+                    <div class="rating-value">38%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 70%;"></div>
+                    <div class="rating-value">73%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 4%;"></div>
+                    <div class="rating-value">3%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 20%;"></div>
+                    <div class="rating-value">15%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/421841DB2EB70A4718B792D247A03CD9838A6E67AB49636F3EA0B971EA18E7C1/scale?width=1200&amp;aspectRatio=1.78&amp;format=webp " alt="Title">
+            <div class="description">
+                <div class="title"> 10 Things I hate About You  &nbsp; (7.3)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 60%;"></div>
+                    <div class="rating-value">64%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 10%;"></div>
+                    <div class="rating-value">7%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 40%;"></div>
+                    <div class="rating-value">37%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 85%;"></div>
+                    <div class="rating-value">87%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://static1.srcdn.com/wordpress/wp-content/uploads/2020/02/Netflix-All-The-Bright-Places-Movie.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> All the Bright Places  &nbsp; (6.6)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 40%;"></div>
+                    <div class="rating-value">39%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">22%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 20%;"></div>
+                    <div class="rating-value">14%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating suspense" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 88%;"></div>
+                    <div class="rating-value">88%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">72%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://matthasanopinion.com/wp-content/uploads/2021/10/matrix.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> The Matrix  &nbsp; (8.4)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">18%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 60%;"></div>
+                    <div class="rating-value">60%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 20%;"></div>
+                    <div class="rating-value">18%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 83%;"></div>
+                    <div class="rating-value">83%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://deadline.com/wp-content/uploads/2024/01/MCDDUPA_WB041-e1708041579639.jpg?w=681&h=383&crop=1" alt="Title">
+            <div class="description">
+                <div class="title"> Dune 2  &nbsp; (8.6)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 10%;"></div>
+                    <div class="rating-value">10%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 40%;"></div>
+                    <div class="rating-value">37%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://www.nyfa.edu/wp-content/uploads/2023/12/lalaland.jpg" alt="Title">
+            <div class="description">
+                <div class="title">  La La Land &nbsp; (8.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 30%;"></div>
+                    <div class="rating-value">25%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">25%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 20%;"></div>
+                    <div class="rating-value">20%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 92%;"></div>
+                    <div class="rating-value">92%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 85%;"></div>
+                    <div class="rating-value">89%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://caffeinatedpete.wordpress.com/wp-content/uploads/2020/10/thumb-1920-800834.jpg " alt="Title">
+            <div class="description">
+                <div class="title"> Split  &nbsp; (7.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Horror</div>
+                    <div class="rating comedy" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 65%;"></div>
+                    <div class="rating-value">63%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 40%;"></div>
+                    <div class="rating-value">38%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">69%</div>
+                </div>
+            </div>
+        </div>
+
+
+
+ <div class="video-card">
+            <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuPBO3m_LYb9Vw8mbnV7Sc7oyKXR0LdgTBnA&s " alt="Title">
+            <div class="description">
+                <div class="title"> Blade Runner 2049  &nbsp; (8.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 10%;"></div>
+                    <div class="rating-value">10%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 59%;"></div>
+                    <div class="rating-value">59%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://variety.com/wp-content/uploads/2016/07/15-suicide-squad.jpg?w=700 " alt="Title">
+            <div class="description">
+                <div class="title">  Suicide Squad &nbsp; (5.5)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 40%;"></div>
+                    <div class="rating-value">39%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 85%;"></div>
+                    <div class="rating-value">87%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://v3img.voot.com/jioimage/newcpp/647a3516befbe7d4b9212c41/647a3516befbe7d4b9212c41_1685731132042_aa.jpg" alt="Title">
+            <div class="description">
+                <div class="title">  Fifty Shades of Grey &nbsp; (4.3)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 10%;"></div>
+                    <div class="rating-value">10%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 99%;"></div>
+                    <div class="rating-value">99%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 77%;"></div>
+                    <div class="rating-value">75%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://m.media-amazon.com/images/S/pv-target-images/b9839cd791f871c956edeead6becda8e374277ae832aa265625d80a43dad4334.jpg " alt="Title">
+            <div class="description">
+                <div class="title">  Django Unchained &nbsp; (8.5)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Western</div>
+                    <div class="rating comedy" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 90%;"></div>
+                    <div class="rating-value">90%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 40%;"></div>
+                    <div class="rating-value">32%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">65%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://resizing.flixster.com/iypDgNmZgFp_t-32qaB52yxdQRk=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p18048217_v_h9_ak.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> Sound of Metal  &nbsp; (7.7)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Musical</div>
+                    <div class="rating action" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 5%;"></div>
+                    <div class="rating-value">4%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 20%;"></div>
+                    <div class="rating-value">18%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">64%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src="https://m.media-amazon.com/images/S/pv-target-images/c2811a95758e03eb16f80f80e83c1fbb245cd8889036b81c51f72c79df5b56f4._SX1080_FMjpg_.jpg " alt="Title">
+            <div class="description">
+                <div class="title">  Little Miss Sunshine &nbsp; (7.8)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 67%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 2%;"></div>
+                    <div class="rating-value">2%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 30%;"></div>
+                    <div class="rating-value">25%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 20%;"></div>
+                    <div class="rating-value">21%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://movies-b26f.kxcdn.com/wp-content/uploads/2013/12/Her-poster.jpg" alt="Title">
+            <div class="description">
+                <div class="title">Her   &nbsp; (8.0)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Sci-fi</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 40%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Drama</div>
+                    <div class="rating gore" style="--rating: 70%;"></div>
+                    <div class="rating-value">69%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 30%;"></div>
+                    <div class="rating-value">30%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 90%;"></div>
+                    <div class="rating-value">87%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 70%;"></div>
+                    <div class="rating-value">65%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src=" https://justalrightreviews.com/wp-content/uploads/2017/08/baby-driver.png?w=1200" alt="Title">
+            <div class="description">
+                <div class="title"> Baby Driver   &nbsp; (7.5)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 85%;"></div>
+                    <div class="rating-value">88%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 20%;"></div>
+                    <div class="rating-value">19%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 70%;"></div>
+                    <div class="rating-value">68%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 91%;"></div>
+                    <div class="rating-value">94%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="video-card">
+            <img class="thumbnail" src=" https://m.media-amazon.com/images/S/pv-target-images/28ad5a615d61071e9d1aebbf684c89fcc3a8c5b3528d8ba778bb13198764d840.jpg" alt="Title">
+            <div class="description">
+                <div class="title"> Forrest Gump  &nbsp; (8.8)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 70%;"></div>
+                    <div class="rating-value">70%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 86%;"></div>
+                    <div class="rating-value">86%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 40%;"></div>
+                    <div class="rating-value">40%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 50%;"></div>
+                    <div class="rating-value">53%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-card">
+            <img class="thumbnail" src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/03/charlie-and-the-chocolate-factory.jpg " alt="Title">
+            <div class="description">
+                <div class="title"> Charlie and the Chocolate Family   &nbsp; (6.7)           </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Fantasy</div>
+                    <div class="rating action" style="--rating: 80%;"></div>
+                    <div class="rating-value">80%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 50%;"></div>
+                    <div class="rating-value">52%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 4%;"></div>
+                    <div class="rating-value">2%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 30%;"></div>
+                    <div class="rating-value">25%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 10%;"></div>
+                    <div class="rating-value">10%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 81%;"></div>
+                    <div class="rating-value">82%</div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        </div>
+
+        <div id="overlay" class="overlay"></div>
 
     <script>
-       const searchInput = document.getElementById('searchInput');
+        const searchInput = document.getElementById('searchInput');
         const videoCards = document.querySelectorAll('.video-card');
 
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
+            let found = false;
 
             videoCards.forEach(card => {
                 const title = card.querySelector('.title').textContent.toLowerCase();
                 
                 if (title.includes(searchTerm)) {
                     card.style.display = 'block';
+                    found = true;
                 } else {
                     card.style.display = 'none';
                 }
             });
+
+            if (!found && searchTerm.length > 0) {
+                const imdbUrl = `https://www.imdb.com/find?q=${encodeURIComponent(searchTerm)}&s=tt&ttype=ft&ref_=fn_ft`;
+                window.location.href = imdbUrl;
+            }
         });
+
 
         // Function to magnify a video card
         function magnifyCard(card) {
@@ -4012,6 +5097,41 @@
                 }
             });
         });
+        async function askAI(question) {
+            try {
+                const response = await fetch('/askAI', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                displayAnswer(data.answer);
+            } catch (error) {
+                console.error('Error:', error);
+                displayAnswer('Sorry, something went wrong. Please try again later.');
+            }
+        }
+
+        function displayAnswer(answer) {
+            console.log(answer); // You can update this to display the answer on the webpage
+            alert(answer); // For simplicity, let's use an alert
+        }
+
+        document.getElementById('askAIButton').addEventListener('click', async function() {
+            const question = prompt('Ask me anything:');
+            if (question) {
+                await askAI(question);
+            }
+        });
+
+        
        
     </script>
 </body>
