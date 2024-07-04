@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +21,7 @@
             display: flex;
             flex-wrap: wrap;
             max-width: 1400px;
-            margin: 700 auto;
+            margin: 0 auto; /* Center the container horizontally */
             padding: 10px;
         }
 
@@ -117,22 +119,20 @@
         .images {
             flex: 1;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end; /* Align images to the right */
+            flex-direction: column; /* Align images in a vertical column */
+            justify-content: flex-start;
         }
 
         .column {
-            flex: 1 1 30%; /* Adjust columns to take up 30% each, to wrap at smaller sizes */
-            max-width: 30%;
             padding: 5px;
             box-sizing: border-box;
         }
 
-      .column img {
-    width: 100%; /* Make all images fill the entire width of their container */
-    height: auto; /* Ensure images maintain their aspect ratio */
-    margin-bottom: 10px; /* Add margin between images */
-}
+        .column img {
+            width: 100%; /* Make all images fill the entire width of their container */
+            height: auto; /* Ensure images maintain their aspect ratio */
+            margin-bottom: 10px; /* Add margin between images */
+        }
 
         .sketch-highlight {
             position: relative;
@@ -170,9 +170,17 @@
                 padding: 12px 20px;
             }
 
+            .images {
+                flex-direction: column; /* Ensure images stack vertically on small screens */
+            }
+
             .column {
-                flex: 1 1 100%; /* Adjust columns to take up 45% each at medium screen sizes */
+                flex: 1 1 100%; /* Make columns take up full width */
                 max-width: 100%;
+            }
+
+            .column img {
+                width: 100%; /* Make images take up full width */
             }
         }
 
