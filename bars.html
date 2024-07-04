@@ -9,12 +9,11 @@
             margin: 0;
             padding: 0;
             background-color: #000; /* Black background */
-            font-family: "Courier";
-            color: #fff; /* White text color */
+            font-family:"Courier";
         }
 
         .header {
-            font-family: "Courier";
+            font-family:"Courier";
             font-size: 24px; /* Decreased font size for clarity */
             position: fixed;
             top: 0;
@@ -38,6 +37,7 @@
         }
 
         .header .title {
+            font-family:"Courier";
             display: flex;
             align-items: center;
         }
@@ -45,7 +45,6 @@
         .header .controls {
             display: flex;
             align-items: center;
-            flex-wrap: wrap; /* Allow wrapping */
         }
 
         .container {
@@ -87,17 +86,21 @@
 
         .title {
             font-size: 25px;
+            font-family:"Courier";
             font-weight: bold;
             margin-bottom: 12px;
+            color: #fff; /* White text color */
         }
 
         .rating-bar {
             display: flex;
             align-items: center;
             margin-bottom: 8px;
+            color: #fff; /* White text color */
         }
 
         .rating-label {
+            font-family:"Courier";
             width: 80px;
             font-size: 14px;
             color: #555;
@@ -105,6 +108,7 @@
         }
 
         .rating {
+            font-family:"Courier";
             flex: 1;
             height: 10px;
             background-color: #ddd;
@@ -118,7 +122,7 @@
         }
 
         .rating.comedy::after {
-            background-color: #bdc610; /* Bright yellow */
+            background-color:#bdc610; /* Bright yellow */
         }
 
         .rating.gore::after {
@@ -126,7 +130,7 @@
         }
 
         .rating.suspense::after {
-            background-color: #bdc610; /* Bright blue */
+            background-color: #bdc610;/* Bright blue */
         }
 
         .rating.romance::after {
@@ -139,9 +143,226 @@
 
         .rating::after {
             content: '';
-            position: absolute
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: var(--rating, 0); /* Width based on the rating percentage */
+        }
 
+        .rating-value {
+            font-family:"Arial";
+            margin-left: 10px;
+            font-size: 14px;
+            color: #fff; /* White text color */
+        }
 
+        .search-bar {
+            font-family:"Courier";
+            padding: 5px;
+            border: 1px solid #fbfbfb; /* Yellow border */
+            border-radius: 0px; /* Rounded border */
+            background-color: #111; /* Dark background */
+            color: #fff;
+            font-size: 17px; /* Larger font size */
+            outline: none;
+            margin-right: 10px; /* Space between the buttons */
+            box-sizing: border-box; /* Include padding in width calculations */
+            max-width: 300px; /* Maximum width for the search bar */
+        }
+
+        .search-bar::placeholder {
+            color: #ccc;
+        }
+
+        .watch,
+        .join,
+        .sort {
+            background-color: #000000;
+            border: 1px solid #ffffff;
+            border-radius: 0px;
+            box-sizing: border-box;
+            color: #fffafa;
+            cursor: pointer;
+            display: inline-block;
+            font-family:"Courier";
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            margin: 0 10px; /* Added margin for spacing */
+            padding: 13px 23px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            touch-action: manipulation;
+            transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+            user-select: none;
+            -webkit-user-select: none;
+            width: auto;
+        }
+
+        .watch,
+        .join,
+        .sort:focus-visible {
+            box-shadow: #222222 0 0 0 2px, rgba(6, 5, 5, 0.8) 0 0 0 4px;
+            transition: box-shadow .2s;
+        }
+
+        .watch,
+        .join,
+        .sort:active {
+            background-color: #000000;
+            border-color: #ffffff;
+            transform: scale(.96);
+        }
+
+        .watch,
+        .join,
+        .sort:disabled {
+            border-color: #DDDDDD;
+            color: #DDDDDD;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+
+        .watch:hover,
+        .join:hover,
+        .sort:hover {
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        /* Additional styles for "Sort" button */
+        .header .controls .sort-button {
+            margin-right: 10px; /* Adjust spacing */
+        }
+        .overlay {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 1000; /* Higher than other content */
+            cursor: pointer; /* Show cursor as pointer */
+        }
+       
+        .video-card.magnified {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1500; /* Ensure it's above overlay */
+            width: 80%; /* Adjust width as needed */
+            max-width: 800px; /* Maximum width for magnified card */
+            max-height: 80%; /* Maximum height for magnified card */
+            overflow-y: auto; /* Enable scrolling if needed */
+            background-color: #111; /* Dark background */
+            border-radius: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .magnified .thumbnail {
+            max-width: 100%; /* Ensure image fits within magnified card */
+            height: auto;
+        }
+
+        .magnified .description {
+            margin-top: 20px;
+        }
+
+        .magnified .title {
+            font-family:"Courier";
+            font-size: 24px; /* Larger font size for magnified card */
+            margin-bottom: 20px;
+        }
+
+        .magnified .rating-bar {
+            margin-bottom: 12px;
+        }
+
+        .magnified .rating-label {
+            width: auto;
+            margin-right: 20px;
+        }
+
+        .magnified .rating-value {
+            font-family:"Courier";
+            font-size: 16px; /* Larger font size for ratings */
+        }
+
+        .magnified .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff; /* White text color */
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .magnified .close-button:hover {
+            color: #d1e709; /* Bright yellow on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <img src="https://t4.ftcdn.net/jpg/03/55/84/51/360_F_355845135_iBLbw7HJFIit4AKjHBHaslgbHipVznGY.jpg" alt="Title Image">
+            bingequic
+        </div>
+        <div class="controls">
+            <input type="text" class="search-bar" placeholder="Search by title..." id="searchInput">
+            
+            <a class="watch" role="button" href="watchlist.html">Watchlist</a>
+            <a class="join" role="button" href="feedback.html">Join</a>
+            <a class="sort" role="button" href="https://copilot.microsoft.com/">Ask AI</a>  <!-- Minimalistic button -->
+            <!-- New "Sort" button -->
+        </div>
+    </div>
+
+    <div class="container" id="videoContainer">
+        <!-- Sample video cards -->
+        <div class="video-card" >
+            <img class="thumbnail" src="https://m.media-amazon.com/images/S/pv-target-images/58fe69d89d369d344adaa03aacce6d42f2bff514421626cc3a76445b7cea0c5d.jpg" alt="Coherence">
+            <div class="description">
+                <div class="title">Coherence &nbsp;  (7.2)        </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Action</div>
+                    <div class="rating action" style="--rating: 50%;"></div>
+                    <div class="rating-value">50%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Comedy</div>
+                    <div class="rating comedy" style="--rating: 24%;"></div>
+                    <div class="rating-value">24%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Gore</div>
+                    <div class="rating gore" style="--rating: 4%;"></div>
+                    <div class="rating-value">4%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Suspense</div>
+                    <div class="rating suspense" style="--rating: 97%;"></div>
+                    <div class="rating-value">97%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label">Romance</div>
+                    <div class="rating romance" style="--rating: 24%;"></div>
+                    <div class="rating-value">24%</div>
+                </div>
+                <div class="rating-bar">
+                    <div class="rating-label" style="color: #ffff00;">Pace</div> <!-- Yellow color for "Pace" text -->
+                    <div class="rating pace" style="--rating: 60%;"></div>
+                    <div class="rating-value">75%</div>
+                </div>
+            </div>
+        </div>
         <div class="video-card">
             <img class="thumbnail" src=" https://i.ytimg.com/vi/enKBzz4hhHQ/maxresdefault.jpg" alt="Title">
             <div class="description">
