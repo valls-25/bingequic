@@ -31,7 +31,8 @@
         }
         .title img {
             width: 60px;
-            margin-right: 10px; /* Adjusted margin for spacing */
+            margin-right: 10px;
+            margin-top:20px /* Adjusted margin for spacing */
         }
         .search-bar {
             font-family: "Courier";
@@ -42,18 +43,20 @@
             color: #fff;
             font-size: 17px; /* Larger font size */
             outline: none;
-            max-width: 300px; /* Maximum width for the search bar */
+            max-width: 300px;
+            margin-right: 20px;
+            margin-bottom:10px; /* Maximum width for the search bar */
         }
         .controls {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: right;
+            justify-content: right;
             width: 100%;
         }
         .watch,
         .join,
         .sort {
-            margin: 0 10px; /* Adjusted margin for spacing */
+            margin: 10px 10px; /* Adjusted margin for spacing */
             text-decoration: none;
             color: #fff;
             font-family: "Courier";
@@ -182,11 +185,11 @@
             font-family: "Courier";
             font-size: 16px;
             font-weight: 600;
-            line-height: 20px;
+            line-height: 15px;
             margin: 0 10px; /* Added margin for spacing */
             padding: 13px 23px;
             position: relative;
-            text-align: center;
+            text-align: centre;
             text-decoration: none;
             touch-action: manipulation;
             transition: box-shadow .2s, -ms-transform .1s, -webkit-transform .1s, transform .1s;
@@ -286,7 +289,7 @@
         @media screen and (max-width: 768px) {
             .header {
                 flex-direction: column;
-                align-items: center;
+                align-items:centre;
             }
             .header-top {
                 display: flex;
@@ -313,20 +316,20 @@
             .join,
             .sort {
                 flex: 1;
-                margin: 5px;
+                margin: 4px;
                 padding: 8px 16px;
-                text-align: center;
+                text-align: right;
             }
         }
     </style>
 </head>
- <div class="header">
+<body>
+    <div class="header">
         <div class="header-top">
-            <input type="text" class="search-bar" placeholder="Search by title..." id="searchInput">
             <div class="title">
                 <img src="https://t4.ftcdn.net/jpg/03/55/84/51/360_F_355845135_iBLbw7HJFIit4AKjHBHaslgbHipVznGY.jpg" alt="Title Image">
-                bingequic
             </div>
+            <input type="text" class="search-bar" placeholder="Search by title..." id="searchInput">
         </div>
         <div class="controls">
             <a class="sort" role="button" href="https://copilot.microsoft.com/">Ask AI</a>
@@ -334,6 +337,7 @@
             <a class="join" role="button" href="feedback.html">Join</a>
         </div>
     </div>
+
     <div class="container" id="videoContainer">
         <!-- Sample video cards -->
         <div class="video-card" >
