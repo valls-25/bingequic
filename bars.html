@@ -11,40 +11,70 @@
             background-color: #000; /* Black background */
             font-family:"Courier";
         }
-        .header {
-    font-family: "Courier";
-    font-size: 24px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+      .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #111;
     color: #fff;
     padding: 10px 20px;
-    text-align: center;
-    z-index: 5000;
+    font-family: "Courier";
+}    
+        .title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
 }
-        .header img {
-            width: 60px; /* Increased image size */
-            vertical-align: middle;
-            margin-right: 20px;
-        }
 
-        .header .title {
-            font-family:"Courier";
-            display: flex;
-            align-items: center;
-        }
+.title img {
+    width: 60px;
+    margin-right: 10px; /* Adjusted margin for spacing */
+}
+        .controls {
+    display: flex;
+    align-items: center;
+}
 
-        .header .controls {
-            display: flex;
-            align-items: center;
-        }
+.search-bar {
+    flex: 1;
+    max-width: 300px;
+    margin-left: auto; /* Push search bar to the right */
+    margin-right: 10px; /* Adjusted margin for spacing */
+}
 
+.watch,
+.join,
+.sort {
+    margin-left: 10px; /* Adjusted margin for spacing */
+    text-decoration: none;
+    color: #fff;
+    font-family: "Courier";
+    font-size: 16px;
+    font-weight: 600;
+    padding: 13px 23px;
+    border: 1px solid #ffffff;
+    border-radius: 0px;
+    background-color: #000000;
+}
+
+.watch:hover,
+.join:hover,
+.sort:hover {
+    background-color: #111;
+}
+
+.watch:active,
+.join:active,
+.sort:active {
+    transform: scale(0.96);
+    background-color: #000000;
+}
+
+.watch:focus-visible,
+.join:focus-visible,
+.sort:focus-visible {
+    box-shadow: #222222 0 0 0 2px, rgba(6, 5, 5, 0.8) 0 0 0 4px;
+}
+       
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -82,13 +112,7 @@
             justify-content: space-between;
         }
 
-        .title {
-            font-size: 25px;
-            font-family:"Courier";
-            font-weight: bold;
-            margin-bottom: 12px;
-            color: #fff; /* White text color */
-        }
+       
 
         .rating-bar {
             display: flex;
@@ -155,27 +179,7 @@
             color: #fff; /* White text color */
         }
 
-       .search-bar {
-    padding: 13px 23px; /* Match padding with watch, join, sort buttons */
-    border: 1px solid #ffffff;
-    border-radius: 0px;
-    background-color: #000000;
-    color: #fffafa;
-    font-family: "Courier";
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 20px;
-    margin-right: 10px; /* Space between buttons */
-    text-align: center;
-    text-decoration: none;
-    touch-action: manipulation;
-    transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
-    user-select: none;
-    -webkit-user-select: none;
-    outline: none;
-    box-sizing: border-box; /* Include padding in width calculations */
-    max-width: 300px; /* Maximum width for the search bar */
-}
+       
         .search-bar::placeholder {
             color: #ccc;
         }
@@ -315,48 +319,40 @@
         }
      @media screen and (max-width: 768px) {
     .header {
-        flex-direction: column; /* Stack header items vertically on small screens */
+        flex-direction: column;
         align-items: center;
     }
-
-    .controls {
-        flex-direction: row; /* Display buttons in a row */
-        flex-wrap: wrap; /* Allow wrapping of buttons */
-        justify-content: center; /* Center align buttons */
-        margin-top: 10px; /* Space above buttons */
+    
+    .title img {
+        margin-right: 0; /* No margin on smaller screens */
     }
-
+    
     .search-bar {
-        flex: 1; /* Take full width */
-        max-width: none; /* Allow full width */
-        margin-right: 0; /* No margin needed on small screens */
-        margin-bottom: 10px; /* Space below search bar */
+        margin: 10px 0;
     }
-
+    
     .watch,
     .join,
     .sort {
-        margin: 5px; /* Adjust margin for smaller spacing */
-        padding: 8px 16px; /* Further decrease padding */
+        margin: 5px;
+        padding: 8px 16px;
     }
 }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="title">
-            <img src="https://t4.ftcdn.net/jpg/03/55/84/51/360_F_355845135_iBLbw7HJFIit4AKjHBHaslgbHipVznGY.jpg" alt="Title Image">
-            bingequic
-        </div>
-        <div class="controls">
-            <input type="text" class="search-bar" placeholder="Search by title..." id="searchInput">
-            
-            <a class="watch" role="button" href="watchlist.html">Watchlist</a>
-            <a class="join" role="button" href="feedback.html">Join</a>
-            <a class="sort" role="button" href="https://copilot.microsoft.com/">Ask AI</a>  <!-- Minimalistic button -->
-            <!-- New "Sort" button -->
-        </div>
+   <div class="header">
+    <div class="title">
+        <img src="https://t4.ftcdn.net/jpg/03/55/84/51/360_F_355845135_iBLbw7HJFIit4AKjHBHaslgbHipVznGY.jpg" alt="Title Image">
+        bingequic
     </div>
+    <input type="text" class="search-bar" placeholder="Search by title..." id="searchInput">
+    <div class="controls">
+        <a class="sort" role="button" href="https://copilot.microsoft.com/">Ask AI</a>
+        <a class="watch" role="button" href="watchlist.html">Watchlist</a>
+        <a class="join" role="button" href="feedback.html">Join</a>
+    </div>
+</div>
 
     <div class="container" id="videoContainer">
         <!-- Sample video cards -->
