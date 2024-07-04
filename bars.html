@@ -12,23 +12,22 @@
             font-family:"Courier";
         }
         .header {
-            font-family:"Courier";
-            font-size: 24px; /* Decreased font size for clarity */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #111; /* Dark background for header */
-            color: #fff; /* White text color */
-            padding: 10px 20px; /* Increased padding */
-            text-align: center;
-            z-index: 5000; /* Ensure it's above other content */
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Space items evenly */
-            box-sizing: border-box; /* Include padding in width calculations */
-        }
-
+    font-family: "Courier";
+    font-size: 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
         .header img {
             width: 60px; /* Increased image size */
             vertical-align: middle;
@@ -156,49 +155,57 @@
             color: #fff; /* White text color */
         }
 
-        .search-bar {
-            font-family:"Courier";
-            padding: 5px;
-            border: 1px solid #fbfbfb; /* Yellow border */
-            border-radius: 0px; /* Rounded border */
-            background-color: #111; /* Dark background */
-            color: #fff;
-            font-size: 17px; /* Larger font size */
-            outline: none;
-            margin-right: 10px; /* Space between the buttons */
-            box-sizing: border-box; /* Include padding in width calculations */
-            max-width: 300px; /* Maximum width for the search bar */
-        }
-
+       .search-bar {
+    padding: 13px 23px; /* Match padding with watch, join, sort buttons */
+    border: 1px solid #ffffff;
+    border-radius: 0px;
+    background-color: #000000;
+    color: #fffafa;
+    font-family: "Courier";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-right: 10px; /* Space between buttons */
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
+    box-sizing: border-box; /* Include padding in width calculations */
+    max-width: 300px; /* Maximum width for the search bar */
+}
         .search-bar::placeholder {
             color: #ccc;
         }
 
-        .watch,
-        .join,
-        .sort {
-            background-color: #000000;
-            border: 1px solid #ffffff;
-            border-radius: 0px;
-            box-sizing: border-box;
-            color: #fffafa;
-            cursor: pointer;
-            display: inline-block;
-            font-family:"Courier";
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 20px;
-            margin: 0 10px; /* Added margin for spacing */
-            padding: 13px 23px;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            touch-action: manipulation;
-            transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
-            user-select: none;
-            -webkit-user-select: none;
-            width: auto;
-        }
+       .watch,
+.join,
+.sort {
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 0px;
+    box-sizing: border-box;
+    color: #fffafa;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Courier";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 10px; /* Added margin for spacing */
+    padding: 13px 23px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+    user-select: none;
+    -webkit-user-select: none;
+    width: auto;
+}
+
 
         .watch,
         .join,
