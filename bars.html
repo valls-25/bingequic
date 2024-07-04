@@ -11,7 +11,7 @@
             background-color: #000; /* Black background */
             font-family:"Courier";
         }
-        .header {
+       .header {
     font-family: "Courier";
     font-size: 24px;
     position: fixed;
@@ -24,15 +24,23 @@
     text-align: center;
     z-index: 5000;
     display: flex;
+    flex-direction: column; /* Stack header items vertically */
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Center align vertically */
     box-sizing: border-box;
 }
-        .header img {
-            width: 40px; /* Increased image size */
-            vertical-align: middle;
-            margin-right: 10px;
-        }
+       .header img {
+    width: 30px; /* Smaller image size */
+    margin-right: 10px; /* Reduced margin */
+}
+        .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align buttons horizontally */
+    flex-wrap: wrap; /* Allow wrapping of buttons */
+    margin-top: 10px; /* Space above buttons */
+}
+
 
         .header .title {
             font-family:"Courier";
@@ -180,7 +188,7 @@
             color: #ccc;
         }
 
-       .watch,
+      .watch,
 .join,
 .sort {
     background-color: #000000;
@@ -194,18 +202,14 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
-    margin: 0 5px; /* Added margin for spacing */
+    margin: 5px; /* Adjust margin for spacing */
     padding: 10px 16px;
-    position: relative;
     text-align: center;
     text-decoration: none;
     touch-action: manipulation;
     transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
     user-select: none;
-    -webkit-user-select: none;
-    width: auto;
-}
-
+    -webkit-user-select: none; }
 
         .watch,
         .join,
