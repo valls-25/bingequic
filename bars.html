@@ -307,6 +307,11 @@
         .magnified .close-button:hover {
             color: #d1e709; /* Bright yellow on hover */
         }
+          @media screen and (max-width: 480px) {
+            .header .controls {
+                flex-direction: row; /* Stack buttons vertically */
+                align-items: flex-start; /* Align items to the left */
+            }
     </style>
 </head>
 <body>
