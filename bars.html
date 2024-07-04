@@ -11,7 +11,6 @@
             background-color: #000; /* Black background */
             font-family:"Courier";
         }
-
         .header {
             font-family:"Courier";
             font-size: 24px; /* Decreased font size for clarity */
@@ -307,11 +306,18 @@
         .magnified .close-button:hover {
             color: #d1e709; /* Bright yellow on hover */
         }
-          @media screen and (max-width: 480px) {
-            .header .controls {
-                flex-direction: row; /* Stack buttons vertically */
-                align-items: flex-start; /* Align items to the left */
-            }
+         @media screen and (max-width: 480px) {
+    .header .controls {
+        flex-direction: row; /* Display buttons horizontally */
+        align-items: center; /* Align items vertically centered */
+        justify-content: flex-end; /* Align buttons to the right */
+        margin-right: 10px; /* Adjust margin for spacing */
+    }
+
+    .header .controls a {
+        margin-left: 10px; /* Add margin between buttons */
+    }
+}
     </style>
 </head>
 <body>
