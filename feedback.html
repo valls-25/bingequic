@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our Community</title>
+    <title>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Join Our Community</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background-color: #000; /* Black background */
-            font-family: "Courier", monospace;
+            font-family: "Courier";
             color: #fff; /* White text color */
             display: flex;
             justify-content: center;
@@ -19,42 +19,86 @@
 
         .feedback-container {
             background-color: #111; /* Dark background for container */
-            padding: 20px; /* Adjust padding for smaller screens */
+            padding: 50px; /* Increase padding for a larger container */
             border-radius: 10px;
-            max-width: 100%; /* Adjust width to fit smaller screens */
+            width: 500px; /* Increase width */
             box-sizing: border-box;
-            width: 100%;
-            text-align: center; /* Center align content */
         }
 
         .feedback-container h1 {
-            font-size: 28px; /* Adjust font size for smaller screens */
-            margin-bottom: 15px; /* Adjust margin */
+            font-family: "Courier";
+            font-size: 32px; /* Increase font size */
+            margin-bottom: 20px; /* Increase margin */
         }
 
         .feedback-container .description {
-            font-size: 18px; /* Adjust font size */
-            margin-bottom: 20px; /* Adjust margin */
+            color: #aaa; /* Gray text color */
+            font-family: "Courier";
+            font-size: 20px; /* Increase font size */
+            margin-bottom: 30px; /* Increase margin */
         }
 
         .feedback-container label {
+            font-family: "Courier";
             display: block;
             margin-bottom: 10px;
-            font-size: 16px; /* Adjust font size */
-            text-align: left; /* Align labels to the left */
+            font-size: 20px; /* Increase font size */
         }
 
         .feedback-container input[type="text"],
         .feedback-container input[type="email"] {
             width: 100%;
-            padding: 12px; /* Adjust padding */
-            margin-bottom: 15px;
-            font-size: 16px; /* Adjust font size */
+            padding: 15px; /* Increase padding */
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #222; /* Dark input background */
+            color: #fff;
+            font-family:"Courier";
+            font-size: 18px; /* Increase font size */
         }
 
         .minimal-button {
-            padding: 12px 20px; /* Adjust padding */
-            font-size: 18px; /* Adjust font size */
+            background-color: #d6f83f; /* Yellow background */
+            border: 2px solid #ffffff;
+            box-sizing: border-box;
+            color: #000000; /* Black text */
+            font-family: "Courier";
+            font-weight: bold;
+            font-size: 20px; /* Increase font size */
+            line-height: 24px;
+            padding: 15px; /* Increase padding */
+            position: relative;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .minimal-button:hover,
+        .minimal-button:active {
+            outline: 0;
+            background-color: #f0e130; /* Darker yellow background on hover */
+            cursor: pointer;
+        }
+
+        .minimal-button:before {
+            content: "";
+            height: calc(100% + 3px);
+            position: absolute;
+            right: -7px;
+            top: -9px;
+            transition: background-color 300ms ease-in;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .minimal-button:hover:before {
+            background-color: #ededed;
         }
     </style>
 </head>
