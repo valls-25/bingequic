@@ -306,18 +306,12 @@
         .magnified .close-button:hover {
             color: #d1e709; /* Bright yellow on hover */
         }
-         @media screen and (max-width: 480px) {
-    .header .controls {
-        flex-direction: row; /* Display buttons horizontally */
-        align-items: center; /* Align items vertically centered */
-        justify-content: flex-end; /* Align buttons to the right */
-        margin-right: 10px; /* Adjust margin for spacing */
-    }
-
-    .header .controls a {
-        margin-left: 10px; /* Add margin between buttons */
-    }
-}
+       @media screen and (max-width: 768px) {
+            .header .controls {
+                flex-direction: row; /* Display buttons in a row */
+                flex-wrap: wrap; /* Allow wrapping of buttons */
+                justify-content: flex-start; /* Align items to the start */
+            }
     </style>
 </head>
 <body>
