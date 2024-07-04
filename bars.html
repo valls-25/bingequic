@@ -11,7 +11,7 @@
             background-color: #000; /* Black background */
             font-family:"Courier";
         }
-       .header {
+        .header {
     font-family: "Courier";
     font-size: 24px;
     position: fixed;
@@ -20,27 +20,19 @@
     width: 100%;
     background-color: #111;
     color: #fff;
-    padding: 8px 16px;
+    padding: 10px 20px;
     text-align: center;
     z-index: 5000;
     display: flex;
-    flex-direction: column; /* Stack header items vertically */
     align-items: center;
-    justify-content: center; /* Center align vertically */
+    justify-content: space-between;
     box-sizing: border-box;
 }
-       .header img {
-    width: 30px; /* Smaller image size */
-    margin-right: 10px; /* Reduced margin */
-}
-        .controls {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center align buttons horizontally */
-    flex-wrap: wrap; /* Allow wrapping of buttons */
-    margin-top: 10px; /* Space above buttons */
-}
-
+        .header img {
+            width: 60px; /* Increased image size */
+            vertical-align: middle;
+            margin-right: 20px;
+        }
 
         .header .title {
             font-family:"Courier";
@@ -91,7 +83,7 @@
         }
 
         .title {
-            font-size: 20px;
+            font-size: 25px;
             font-family:"Courier";
             font-weight: bold;
             margin-bottom: 12px;
@@ -164,13 +156,13 @@
         }
 
        .search-bar {
-    padding: 10px 20px; /* Match padding with watch, join, sort buttons */
+    padding: 13px 23px; /* Match padding with watch, join, sort buttons */
     border: 1px solid #ffffff;
     border-radius: 0px;
     background-color: #000000;
     color: #fffafa;
     font-family: "Courier";
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 20px;
     margin-right: 10px; /* Space between buttons */
@@ -182,13 +174,13 @@
     -webkit-user-select: none;
     outline: none;
     box-sizing: border-box; /* Include padding in width calculations */
-    max-width: 250px; /* Maximum width for the search bar */
+    max-width: 300px; /* Maximum width for the search bar */
 }
         .search-bar::placeholder {
             color: #ccc;
         }
 
-      .watch,
+       .watch,
 .join,
 .sort {
     background-color: #000000;
@@ -199,17 +191,21 @@
     cursor: pointer;
     display: inline-block;
     font-family: "Courier";
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 20px;
-    margin: 5px; /* Adjust margin for spacing */
-    padding: 10px 16px;
+    margin: 0 10px; /* Added margin for spacing */
+    padding: 13px 23px;
+    position: relative;
     text-align: center;
     text-decoration: none;
     touch-action: manipulation;
     transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
     user-select: none;
-    -webkit-user-select: none; }
+    -webkit-user-select: none;
+    width: auto;
+}
+
 
         .watch,
         .join,
@@ -319,12 +315,8 @@
         }
      @media screen and (max-width: 768px) {
     .header {
-         padding: 8px 12px;
         flex-direction: column; /* Stack header items vertically on small screens */
         align-items: center;
-    }
-         .header img {
-        width: 30px; /* Smaller image size */
     }
 
     .controls {
@@ -332,9 +324,6 @@
         flex-wrap: wrap; /* Allow wrapping of buttons */
         justify-content: center; /* Center align buttons */
         margin-top: 10px; /* Space above buttons */
-    }
-          .title {
-        font-size: 18px; /* Further decreased font size */
     }
 
     .search-bar {
@@ -359,10 +348,9 @@
             <img src="https://t4.ftcdn.net/jpg/03/55/84/51/360_F_355845135_iBLbw7HJFIit4AKjHBHaslgbHipVznGY.jpg" alt="Title Image">
             bingequic
         </div>
-        <div class="search-bar">
+        <div class="controls">
             <input type="text" class="search-bar" placeholder="Search by title..." id="searchInput">
-        </div>
-         <div class="button-group">
+            
             <a class="watch" role="button" href="watchlist.html">Watchlist</a>
             <a class="join" role="button" href="feedback.html">Join</a>
             <a class="sort" role="button" href="https://copilot.microsoft.com/">Ask AI</a>  <!-- Minimalistic button -->
